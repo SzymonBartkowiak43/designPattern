@@ -1,4 +1,4 @@
-package org.example.Singelton;
+package org.example.Singelton.zadanie1;
 
 class Triangle {
     private double a, b, c;

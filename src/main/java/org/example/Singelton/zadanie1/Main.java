@@ -1,4 +1,4 @@
-package org.example.Singelton;
+package org.example.Singelton.zadanie1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,8 +35,10 @@ public class Main {
         for (Object figure : figures) {
             if (figure instanceof Circle)
                 System.out.println("Perimeter: " + ((Circle) figure).calculatePerimeter() + ", Area: " + ((Circle) figure).calculateArea());
-            else
+            else if(figure instanceof  Rectangle)
                 System.out.println("Perimeter: " + ((Rectangle) figure).perimeter() + ", Area: " + ((Rectangle) figure).area());
+            else
+                System.out.println("Perimeter " + ((Triangle) figure).getPerimeter() + ", Area: " + ((Triangle) figure).getArea() );
         }
 
         scanner.close();

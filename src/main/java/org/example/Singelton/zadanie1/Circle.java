@@ -1,9 +1,9 @@
-package org.example.Singelton;
+package org.example.Singelton.zadanie1;
 
 class Circle {
     private double radius;
 
-    public Circle(double adius) {
+    public Circle(double radius) {
         this.radius = radius; }
 
     public double calculatePerimeter() {
