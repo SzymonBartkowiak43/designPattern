@@ -1,6 +1,6 @@
 package org.example.Singelton.zadanie2;
 
-public class Record {
+class Record {
     private int id;
     private String name;
     private int age;

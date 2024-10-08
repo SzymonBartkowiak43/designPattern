@@ -1,36 +1,35 @@
 package org.example.Singelton.zadanie2;
 
 import java.util.*;
+
 class Database {
     private static Map<String, Database> instances = new HashMap<>();
-    private List<DatabaseConnection> connectionPool;
-    private List<Record> records;
-    private int maxConnections = 3;
-    private int connectionIndex = 0;
+    private List<Record> records; // Lista przechowująca rekordy
     private int nextId = 1;
 
-    public Database() {
-        this.connectionPool = new ArrayList<>();
-        for (int i = 0; i < maxConnections; i++) {
-            this.connectionPool.add(new DatabaseConnectionImpl());
-        }
+
+
+
+    private Database() {
         this.records = new ArrayList<>();
     }
 
-    public static synchronized Database getInstance(String dbName) {
-        if (!instances.containsKey(dbName)) {
-            instances.put(dbName, new Database());
+    public static Database getInstance(String key) {
+        if(!instances.containsKey(key)) {
+            instances.put(key, new Database());
         }
-        return instances.get(dbName);
+
+        return instances.get(key);
+    }
+    public DatabaseConnection getConnection() {
+        return new DatabaseConnectionImpl();
     }
 
-    public synchronized DatabaseConnection getConnection() {
-        DatabaseConnection connection = connectionPool.get(connectionIndex);
-        connectionIndex = (connectionIndex + 1) % maxConnections; // Cykl połączeń
-        return connection;
-    }
+    // Zwraca implementację interfejsu DatabaseConnection
+    // Prywatna klasa wewnętrzna implementująca interfejs DatabaseConnection
+    // W Javie korzystamy z cech klas wewnętrznych, w C# ta klasa musiałaby posiadać
+    // referencję na obiekt klasy Database
     private class DatabaseConnectionImpl implements DatabaseConnection {
-
         // Dodawanie nowego rekordu
         @Override
         public int addRecord(String name, int age) {
@@ -43,9 +42,7 @@ class Database {
         // Pobieranie rekordu po ID
         @Override
         public Optional<Record> getRecord(int id) {
-            return records.stream()
-                    .filter(record -> record.getId() == id)
-                    .findFirst();
+            return records.stream().filter(record -> record.getId() == id).findFirst();
         }
 
         // Aktualizowanie rekordu po ID
@@ -54,7 +51,6 @@ class Database {
             Optional<Record> optionalRecord = getRecord(id);
 
             if (optionalRecord.isPresent()) {
-
                 Record record = optionalRecord.get();
                 record.setName(newName);
                 record.setAge(newAge);
@@ -65,13 +61,9 @@ class Database {
         }
 
 
-
         // Usuwanie rekordu po ID
-
         @Override
-
         public void deleteRecord(int id) {
-
             Optional<Record> optionalRecord = getRecord(id);
 
             if (optionalRecord.isPresent()) {
@@ -83,11 +75,8 @@ class Database {
         }
 
 
-
         // Wyświetlanie wszystkich rekordów
-
         @Override
-
         public void showAllRecords() {
             if (records.isEmpty()) {
                 System.out.println("No records in the database.");
@@ -95,9 +84,6 @@ class Database {
                 System.out.println("All records:");
                 records.forEach(System.out::println);
             }
-
         }
-
     }
-
 }
