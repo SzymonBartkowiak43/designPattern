@@ -4,13 +4,13 @@ import java.util.*;
 
 class Database {
     private static Map<String, Database> instances = new HashMap<>();
-    private List<Record> records; // Lista przechowująca rekordy
+    private List<Record> records;
     private int nextId = 1;
 
 
 
 
-    private Database() {
+    Database() {
         this.records = new ArrayList<>();
     }
 
@@ -25,10 +25,6 @@ class Database {
         return new DatabaseConnectionImpl();
     }
 
-    // Zwraca implementację interfejsu DatabaseConnection
-    // Prywatna klasa wewnętrzna implementująca interfejs DatabaseConnection
-    // W Javie korzystamy z cech klas wewnętrznych, w C# ta klasa musiałaby posiadać
-    // referencję na obiekt klasy Database
     private class DatabaseConnectionImpl implements DatabaseConnection {
         // Dodawanie nowego rekordu
         @Override

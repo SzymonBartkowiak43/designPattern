@@ -9,6 +9,8 @@ public class Ztp01 {
         DatabaseConnection connection2 = connectionManager.getConnection("DB1");
         DatabaseConnection connection3 = connectionManager.getConnection("DB1");
         DatabaseConnection connection4 = connectionManager.getConnection("DB1");
+        DatabaseConnection connection5 = connectionManager.getConnection("DB1");
+        DatabaseConnection connection6 = connectionManager.getConnection("DB1");
 
 
         connection1.addRecord("Karol", 23);
@@ -26,10 +28,10 @@ public class Ztp01 {
         System.out.println("C4:");
         connection4.showAllRecords();
 
-        if (connection1.hashCode() == connection3.hashCode()) {
-            System.out.println("connection1 i connection4 to ten sam obiekt.");
+        if (connection6.hashCode() == connection3.hashCode()) {
+            System.out.println("TE SAME");
         } else {
-            System.out.println("connection1 i connection4 to różne obiekty.");
+            System.out.println("RÓŻNE");
         }
 
 
