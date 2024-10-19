@@ -1,8 +1,7 @@
 package org.example.Factory;
 
 // Klasa reprezentująca nagłówek kolumny w tabeli
-class Header
-{
+abstract class Header {
     private String name;
 
     public Header(String name) {
@@ -12,4 +11,8 @@ class Header
     public String getName() {
         return name;
     }
+
+    // Metody fabrykujące komórki
+    public abstract Cell createCell(Object value);
+    public abstract Cell createDefaultCell();
 }

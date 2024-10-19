@@ -1,7 +1,14 @@
 package org.example.Factory;
 
 public class TextCell extends Cell {
+    private String value;
+
     public TextCell(String value) {
-        super(value);
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s", value);
     }
 }

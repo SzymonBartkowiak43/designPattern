@@ -4,27 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Table {
-    private List<Header> headers = new ArrayList<>();
-    private List<List<Cell>> rows = new ArrayList<>();
+    private List<Header> headers = new ArrayList<>();  // Lista nagłówków kolumn
+    private List<List<Cell>> rows = new ArrayList<>(); // Lista wierszy (każdy wiersz to lista komórek)
 
     public void addColumn(Header header) {
         headers.add(header);
 
         // Dodajemy puste komórki do każdego z istniejących wierszy
         for (List<Cell> row : rows) {
-            row.add(new Cell(""));
+
+            row.add(header.createDefaultCell());
         }
     }
 
-    public void addRow(String... cellValues) {
+    public void addRow(Object... cellValues) {
         if (cellValues.length != headers.size()) {
             throw new IllegalArgumentException("Liczba wartości nie zgadza się z liczbą kolumn.");
         }
 
-        // Dodajemy wiersz wypełniony komórkami z wartością
+
         List<Cell> newRow = new ArrayList<>();
-        for (String value : cellValues) {
-            newRow.add(new Cell(value));
+        for (int i = 0; i < cellValues.length; i++) {
+            newRow.add(headers.get(i).createCell(cellValues[i]));
         }
         rows.add(newRow);
     }
