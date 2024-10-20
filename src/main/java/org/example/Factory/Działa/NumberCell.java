@@ -1,4 +1,4 @@
-package org.example.Factory;
+package org.example.Factory.Działa;
 
 public class NumberCell extends Cell {
     private Number value;

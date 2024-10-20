@@ -1,21 +1,21 @@
-package org.example.Factory;
+package org.example.Factory.zadanie2;
 
-class BooleanHeader extends Header {
+public class BooleanHeader extends Header{
     public BooleanHeader(String name) {
         super(name);
     }
 
     @Override
     public Cell createCell(Object value) {
-        if (value instanceof Boolean) {
+        if(value instanceof Boolean) {
             return new BooleanCell((Boolean) value);
         } else {
-            throw new IllegalArgumentException("Expected a Boolean");
+            throw new IllegalArgumentException("Bad value of boolean");
         }
     }
 
     @Override
     public Cell createDefaultCell() {
-        return new BooleanCell(false);
+        return new BooleanCell(Boolean.FALSE);
     }
 }

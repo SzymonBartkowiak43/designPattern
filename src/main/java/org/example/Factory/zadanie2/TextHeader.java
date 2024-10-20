@@ -1,6 +1,6 @@
-package org.example.Factory;
+package org.example.Factory.zadanie2;
 
-class TextHeader extends Header {
+public class TextHeader extends Header{
     public TextHeader(String name) {
         super(name);
     }

@@ -1,4 +1,4 @@
-package org.example.Factory;
+package org.example.Factory.Działa;
 
 class NumberHeader extends Header {
     public NumberHeader(String name) {

@@ -1,4 +1,4 @@
-package org.example.Factory;
+package org.example.Factory.Działa;
 
 // Klasa reprezentująca nagłówek kolumny w tabeli
 abstract class Header {
