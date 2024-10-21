@@ -1,4 +1,4 @@
-package org.example.Factory.Działa;
+package org.example.prototype;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +12,19 @@ class Table {
 
         // Dodajemy puste komórki do każdego z istniejących wierszy
         for (List<Cell> row : rows) {
-            row.add(header.createDefaultCell());
+            row.add(new Cell(""));
         }
     }
 
-    public void addRow(Object... cellValues) {
+    public void addRow(String... cellValues) {
         if (cellValues.length != headers.size()) {
             throw new IllegalArgumentException("Liczba wartości nie zgadza się z liczbą kolumn.");
         }
 
-
+        // Dodajemy wiersz wypełniony komórkami z wartością
         List<Cell> newRow = new ArrayList<>();
-        for (int i = 0; i < cellValues.length; i++) {
-            newRow.add(headers.get(i).createCell(cellValues[i]));
+        for (String value : cellValues) {
+            newRow.add(new Cell(value));
         }
         rows.add(newRow);
     }

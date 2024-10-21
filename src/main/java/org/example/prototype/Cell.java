@@ -1,9 +1,9 @@
-package org.example.Factory.Działa;
+package org.example.prototype;
 
-public class TextCell extends Cell {
+class Cell {
     private String value;
 
-    public TextCell(String value) {
+    public Cell(String value) {
         this.value = value;
     }
 
