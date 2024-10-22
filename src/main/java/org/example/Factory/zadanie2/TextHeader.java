@@ -15,3 +15,4 @@ public class TextHeader extends Header{
         return new TextCell("");
     }
 }
+
