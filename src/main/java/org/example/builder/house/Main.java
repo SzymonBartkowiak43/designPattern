@@ -10,5 +10,6 @@ public class Main {
                 .build();
 
         System.out.println(house.toString());
+        System.out.println(house.toString());
     }
 }
