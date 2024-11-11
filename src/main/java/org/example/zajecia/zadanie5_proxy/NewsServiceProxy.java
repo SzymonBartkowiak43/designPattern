@@ -12,6 +12,7 @@ public class NewsServiceProxy implements INewsService {
         this.user = user;
     }
 
+
     @Override
     public Response readMessage(int id) {
         if (cache.containsKey(id)) {
