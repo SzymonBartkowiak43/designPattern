@@ -4,7 +4,7 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 
-class Task implements ITaskComponent {
+class Task implements ITaskComposite {
     @Getter
     private final String name;
     @Getter

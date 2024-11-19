@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 
-public class OptionalTaskGroup extends TaskGroup implements ITaskComponent{
+public class OptionalTaskGroup extends TaskGroup implements ITaskComposite {
 
 
     public OptionalTaskGroup(String name) {
@@ -16,7 +16,7 @@ public class OptionalTaskGroup extends TaskGroup implements ITaskComponent{
     @Override
     public boolean isCompleted() {
         return list.stream()
-                .anyMatch(ITaskComponent::isCompleted);
+                .anyMatch(ITaskComposite::isCompleted);
     }
 
 
@@ -26,11 +26,11 @@ public class OptionalTaskGroup extends TaskGroup implements ITaskComponent{
             return;
         }
         Random random = new Random();
-        List<ITaskComponent> incompleteTasks = list.stream()
+        List<ITaskComposite> incompleteTasks = list.stream()
                 .filter(task -> !task.isCompleted())
                 .toList();
         if (!incompleteTasks.isEmpty()) {
-            ITaskComponent randomTask = incompleteTasks.get(random.nextInt(incompleteTasks.size()));
+            ITaskComposite randomTask = incompleteTasks.get(random.nextInt(incompleteTasks.size()));
             randomTask.markAsCompleted(completionDate);
         }
     }

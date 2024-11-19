@@ -2,7 +2,7 @@ package org.example.zajecia.zadanie6_composite;
 
 import java.time.LocalDate;
 
-public interface ITaskComponent {
+public interface ITaskComposite {
     String getName();
     LocalDate getStartDate();
     LocalDate getEndDate();

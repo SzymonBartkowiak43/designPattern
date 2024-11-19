@@ -2,7 +2,7 @@ package org.example.zajecia.zadanie6_composite;
 
 
 
-public class NormalTaskGroup extends TaskGroup implements ITaskComponent{
+public class NormalTaskGroup extends TaskGroup implements ITaskComposite {
 
     public NormalTaskGroup(String name) {
         super(name);
@@ -11,7 +11,7 @@ public class NormalTaskGroup extends TaskGroup implements ITaskComponent{
     @Override
     public boolean isCompleted() {
         return list.stream()
-                .allMatch(ITaskComponent::isCompleted);
+                .allMatch(ITaskComposite::isCompleted);
     }
 
     @Override
@@ -19,13 +19,5 @@ public class NormalTaskGroup extends TaskGroup implements ITaskComponent{
         return isCompleted() ? "[Completed]" : "[Pending]";
     }
 
-
-    @Override
-    public void display(String indent) {
-        System.out.println(indent + name + " - Status: " + getStatus());
-        for (ITaskComponent component : list) {
-            component.display(indent + "----");
-        }
-    }
 
 }

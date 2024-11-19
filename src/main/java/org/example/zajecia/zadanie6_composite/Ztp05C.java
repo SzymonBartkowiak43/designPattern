@@ -39,6 +39,8 @@ public class Ztp05C {
         Task task5 = new Task("3A - Implementacja algorytmu sortowania", LocalDate.of(2024, 10, 21), LocalDate.of(2024, 10, 27));
         Task task6 = new Task("3B - Analiza złożoności czasowej", LocalDate.of(2024, 10, 24), LocalDate.of(2024, 10, 31));
 
+
+
         OptionalTaskGroup optionalTaskGroup = new OptionalTaskGroup("Grupa Optional");
         optionalTaskGroup.addTask(task5);
         optionalTaskGroup.addTask(task6);
@@ -47,6 +49,7 @@ public class Ztp05C {
         System.out.println("------------");
         System.out.println("------------");
 
+        System.out.println("Jest wykonane: " + optionalTaskGroup.isCompleted());
 
         optionalTaskGroup.markAsCompleted(LocalDate.of(2024, 11, 1));
 

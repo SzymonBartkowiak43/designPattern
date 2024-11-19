@@ -9,20 +9,20 @@ import java.util.List;
 abstract class TaskGroup {
     @Getter
     protected String name;
-    protected List<ITaskComponent> list = new ArrayList<>();
+    protected List<ITaskComposite> list = new ArrayList<>();
 
     public TaskGroup(String name) {
         this.name = name;
     }
 
-    public void addTask(ITaskComponent task) {
+    public void addTask(ITaskComposite task) {
         list.add(task);
     }
 
 
     public LocalDate getStartDate() {
         return list.stream()
-                .map(ITaskComponent::getStartDate)
+                .map(ITaskComposite::getStartDate)
                 .min(LocalDate::compareTo)
                 .orElse(null);
     }
@@ -30,7 +30,7 @@ abstract class TaskGroup {
 
     public LocalDate getEndDate() {
         return list.stream()
-                .map(ITaskComponent::getEndDate)
+                .map(ITaskComposite::getEndDate)
                 .max(LocalDate::compareTo)
                 .orElse(null);
     }
@@ -38,7 +38,7 @@ abstract class TaskGroup {
 
     public boolean isLate() {
         return list.stream()
-                .anyMatch(ITaskComponent::isLate);
+                .anyMatch(ITaskComposite::isLate);
     }
 
     public void markAsCompleted(LocalDate completionDate) {
@@ -52,7 +52,7 @@ abstract class TaskGroup {
 
     public boolean isCompleted() {
         return list.stream()
-                .allMatch(ITaskComponent::isCompleted);
+                .allMatch(ITaskComposite::isCompleted);
     }
 
     public String getStatus() {
@@ -62,7 +62,7 @@ abstract class TaskGroup {
 
     public void display(String indent) {
         System.out.println(indent + name + " - Status: " + getStatus());
-        for (ITaskComponent component : list) {
+        for (ITaskComposite component : list) {
             component.display(indent + "----");
         }
     }
