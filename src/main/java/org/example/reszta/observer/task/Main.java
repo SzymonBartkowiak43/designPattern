@@ -16,6 +16,7 @@ public class Main {
 
         weatherForecast.registerObserver(radioNews);
         weatherForecast.registerObserver(internetNews);
+        weatherForecast.registerObserver(internetNews);
         weatherForecast.registerObserver(tvNews);
 
 
